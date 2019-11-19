@@ -1,2 +1,2 @@
 ﻿Import-Module AzureAD
-Connect-AzureAD -Credential (Get-Credential)
+Connect-AzureAD 
