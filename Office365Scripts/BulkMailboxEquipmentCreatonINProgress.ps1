@@ -26,6 +26,7 @@ for ($index = 0; $index -lt $File.Length; $index++){
         Set-Mailbox -Identity $File.EmailAddress[$index] -ModeratedBy @{Add=$Value} -ModerationEnabled $true
     }
 }
+<#
 #$Users[0..]
 #this loop while useful is not needed. 
 for ($index = 0; $index -lt $Users.Length - 1; $index++){
@@ -36,6 +37,7 @@ $UsersString = $Users[0..7] -join " , "
 $UsersString = $UsersString.TrimEnd(" , ")
 $User
 
+'''
 Foreach($mailbox in $File.EmailAddress){
     Remove-MailboxPermission -Identity $mailbox -User jreid@atarabio.com -AccessRights FullAccess
 }
@@ -43,3 +45,5 @@ Foreach($mailbox in $File.EmailAddress){
 Foreach($mailbox in $File.EmailAddress){
     Get-MailboxPermission -Identity $mailbox -User jreid@atarabio.com
 }
+'''
+#>
