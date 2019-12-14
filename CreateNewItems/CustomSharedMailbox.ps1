@@ -19,7 +19,7 @@ New-Mailbox -Shared -Name $MailboxName -DisplayName $MailboxName -Alias $Mailbox
 #Wait for the mailbox to create
 Start-Sleep -Milliseconds 30
 #Hide the mailbox from addressbook
-Set-Mailbox -Identity $email -HiddenFromAddressListsEnabled
+Set-Mailbox -Identity $email -HiddenFromAddressListsEnabled $true
 Start-Sleep -Milliseconds 5
 Write-Host "Setting account creation"
 #
