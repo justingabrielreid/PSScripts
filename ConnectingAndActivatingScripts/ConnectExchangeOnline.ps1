@@ -2,7 +2,8 @@
 
 #Install-Module ExchangeOnline
 #only needed if new machine
-Import-Module ExchangeOnline
-#Credential Prompting
-Connect-EXOService -UserPrincipalName (Read-Host -Prompt "Enter your email address: ")
-$PSSession = Get-PSSession
+
+#Create the PSSession and import it to create a connection to O365. This works with MFA. The Script will then prompt you for your credentials.
+$ExchangeSession = New-PSSession
+Import-PSSession $ExchangeSession
+

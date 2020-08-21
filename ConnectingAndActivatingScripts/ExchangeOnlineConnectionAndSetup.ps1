@@ -1,0 +1,14 @@
+#Author: Justin Reid
+#Date 1/14/2020
+<# Purpose of this script is to quickly connect to ExchangeOnline and install the module to connect.
+
+#>
+
+
+Find-Module *Microsoft.Exchange* -Repository PSGallery -Force | Install-Module
+Import-Module -Name *Microsoft.Exchange*
+
+#No ready to connect 
+New-ExoPSSession
+
+
