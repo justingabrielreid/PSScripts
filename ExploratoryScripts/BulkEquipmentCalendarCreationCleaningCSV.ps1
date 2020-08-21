@@ -1,6 +1,14 @@
-﻿$csv = Import-Csv C:\Users\jreid\Documents\equipmentCalendars2.csv                                            
-#$csv                                                                                                          
-$csv | foreach {
+﻿
+#Find and Open the CSV file
+$equipmentCSV = New-Object system.windows.forms.openfiledialog
+$equipmentCSV.Title="Select CSV: "
+$equipmentCSV.MultiSelect = $False
+$equipmentCSV.showdialog()
+#Import the CSV and assign it to a variable
+Import-Csv $equipmentCSV.FileName -OutVariable CSVObject
+                                           
+#$csvObject                                                                                                          
+$csvObject | foreach {
    #remove the - from the instrumentID as this will be used for the email address
    $emailAddress = $_.InstrumentID.split('-')
    #static method to join the newly created array into a string
@@ -19,5 +27,5 @@ $csv | foreach {
    $_.Alias = $alias
    #next step is to write this to the .csv so we can use the properties of the CSV to create the calendars. 
 }
-$csv | Export-Csv C:\Users\jreid\Documents\refinedEquipmentCalenders2.csv
+$csvObject | Export-Csv $equipmentCSV.FileName
 
